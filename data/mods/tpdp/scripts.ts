@@ -79,6 +79,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		}
 	},
 	pokemon: {
+		status: {id: string},
 		getStatusSlots(): number {
 			let statusSlots = 0;
 			for (const st in this.status) {
@@ -153,7 +154,9 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 			}
 
 			//where it actually sets status
-			this.status = status.id;
+			//this.status = status.id;
+			console.log(this.status);
+			this.status[status.id] = {id: status.id, target: this};
 			this.statusData = {id: status.id, target: this};
 			
 			if (source) this.statusData.source = source;
